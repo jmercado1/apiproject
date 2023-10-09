@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>True or False - DOG EDITION</title>
+</head>
+<body>
+    <h1>True or False - DOG EDITION</h1>
+    <form id="quiz-form">
+        <div class="question">
+            <p>1. Dogs can be trained to detect epileptic seizures in humans.</p>
+            <label>
+                <input type="radio" name="q1" value="true"> True
+            </label>
+            <label>
+                <input type="radio" name="q1" value="false"> False
+            </label>
+        </div>
+        <div class="question">
+            <p>2. A Border Collie named Chaser has learned the names of 1,022 toys, and can retrieve each by name.</p>
+            <label>
+                <input type="radio" name="q2" value="true"> True
+            </label>
+            <label>
+                <input type="radio" name="q2" value="false"> False
+            </label>
+        </div>
+        <div class="question">
+            <p>3. Hyenas aren't actually dogs. They are more closely related to cats. </p>
+            <label>
+                <input type="radio" name="q3" value="true"> True
+            </label>
+            <label>
+                <input type="radio" name="q3" value="false"> False
+            </label>
+        </div>
+        <div class="question">
+            <p>4. The famous nickname, "mans best friend," is used in many other languages as well as English.</p>
+            <label>
+                <input type="radio" name="q4" value="true"> True
+            </label>
+            <label>
+                <input type="radio" name="q4" value="false"> False
+            </label>
+        </div>
+        <div class="question">
+            <p>5. Dogs dont go into menopause and will continue to go on heat indefinitely unless they are spayed.</p>
+            <label>
+                <input type="radio" name="q5" value="true"> True
+            </label>
+            <label>
+                <input type="radio" name="q5" value="false"> False
+            </label>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        const form = document.getElementById('quiz-form');
+        const resultsDiv = document.getElementById('results');
+
+        // Define the correct answers
+        const correctAnswers = {
+            q1: "true",
+            q2: "true",
+            q3: "true",
+            q4: "true",
+            q5: "true",
+        };
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let score = 0;
+
+            // Check answers and calculate the score
+            for (let i = 1; i <= 5; i++) {
+                const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedAnswer && selectedAnswer.value === correctAnswers[`q${i}`]) {
+                    score++;
+                }
+            }
+
+            // Display the score
+            resultsDiv.innerHTML = `Your score: ${score}/5`;
+        });
+    </script>
+</body>
+</html>
